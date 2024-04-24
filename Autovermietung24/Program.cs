@@ -49,9 +49,9 @@ class Program
         do
         {
             Console.WriteLine("Automanagement-Menü: Wählen sie einer der Optionen in dem sie die zugehörige Zahl eintippen:\n" +
-            "1. Automanagement\n" +
-            "2. Kundenmanagement\n" +
-            "3. Beenden");
+            "1. \n" +
+            "2. \n" +
+            "3. ");
             var Amenu = Console.ReadLine();
             switch (Amenu)
             {
@@ -79,9 +79,9 @@ class Program
         do
         {
             Console.WriteLine("Kundenmanagement-Menü: Wählen sie einer der Optionen in dem sie die zugehörige Zahl eintippen:\n" +
-            "1. Automanagement\n" +
-            "2. Kundenmanagement\n" +
-            "3. Beenden");
+            "1. \n" +
+            "2. \n" +
+            "3. ");
             var Kmenu = Console.ReadLine();
             switch (Kmenu)
             {
