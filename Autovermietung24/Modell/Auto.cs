@@ -14,7 +14,7 @@ namespace Autovermietung24.Modell
         public string Kraftstoff { get; set; }
         public string Marke { get; set; }
         public string Model { get; set; }
-        public int Jahr { get; set; }
+        public string Erstzulassung { get; set; }
         public string Kennzeichen { get; set; }
         public string Status { get; set; }
     }

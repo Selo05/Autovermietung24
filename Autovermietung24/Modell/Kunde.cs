@@ -9,7 +9,7 @@ namespace Autovermietung24.Modell
     public class Kunde
     {
         public int Id { get; set; }
-        public bool Stammkunde { get; set; }
+        public string Bewertung { get; set; }
         public string Nachname { get; set; }
         public string Vorname { get; set; }
         public string Geburtsdatum { get; set; }

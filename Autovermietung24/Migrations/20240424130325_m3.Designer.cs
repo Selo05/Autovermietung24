@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Autovermietung24.Migrations
 {
     [DbContext(typeof(AutovermietungsContext))]
-    [Migration("20240424063621_1")]
-    partial class _1
+    [Migration("20240424130325_m3")]
+    partial class m3
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -24,12 +24,13 @@ namespace Autovermietung24.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("Getriebe")
+                    b.Property<string>("Erstzulassung")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<int>("Jahr")
-                        .HasColumnType("INTEGER");
+                    b.Property<string>("Getriebe")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("Karosserieform")
                         .IsRequired()
@@ -51,8 +52,9 @@ namespace Autovermietung24.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<bool>("Status")
-                        .HasColumnType("INTEGER");
+                    b.Property<string>("Status")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
 
                     b.HasKey("Id");
 
@@ -70,6 +72,10 @@ namespace Autovermietung24.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Ausweisnummer")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Bewertung")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
@@ -99,9 +105,6 @@ namespace Autovermietung24.Migrations
                     b.Property<string>("Staatsangehörigkeit")
                         .IsRequired()
                         .HasColumnType("TEXT");
-
-                    b.Property<bool>("Stammkunde")
-                        .HasColumnType("INTEGER");
 
                     b.Property<string>("Vorname")
                         .IsRequired()

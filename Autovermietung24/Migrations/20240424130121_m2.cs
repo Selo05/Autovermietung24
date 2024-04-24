@@ -4,7 +4,7 @@
 
 namespace Autovermietung24.Migrations
 {
-    public partial class _1 : Migration
+    public partial class m2 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -19,9 +19,9 @@ namespace Autovermietung24.Migrations
                     Kraftstoff = table.Column<string>(type: "TEXT", nullable: false),
                     Marke = table.Column<string>(type: "TEXT", nullable: false),
                     Model = table.Column<string>(type: "TEXT", nullable: false),
-                    Jahr = table.Column<int>(type: "INTEGER", nullable: false),
+                    Erstzulassung = table.Column<string>(type: "TEXT", nullable: false),
                     Kennzeichen = table.Column<string>(type: "TEXT", nullable: false),
-                    Status = table.Column<bool>(type: "INTEGER", nullable: false)
+                    Status = table.Column<string>(type: "TEXT", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -34,7 +34,7 @@ namespace Autovermietung24.Migrations
                 {
                     Id = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    Stammkunde = table.Column<bool>(type: "INTEGER", nullable: false),
+                    Bewertung = table.Column<string>(type: "TEXT", nullable: false),
                     Nachname = table.Column<string>(type: "TEXT", nullable: false),
                     Vorname = table.Column<string>(type: "TEXT", nullable: false),
                     Geburtsdatum = table.Column<string>(type: "TEXT", nullable: false),
