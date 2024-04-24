@@ -17,9 +17,9 @@ class Program
         do
         {
             Console.WriteLine("Hauptmenü: Wählen sie einer der Optionen in dem sie die zugehörige Zahl eintippen:\n" +
-            "1. Automanagement\n" +
-            "2. Kundenmanagement\n" +
-            "3. Beenden");
+            "1. Automanagement-Menü\n" +
+            "2. Kundenmanagement-Menü\n" +
+            "3. Programm Beenden");
             var menu = Console.ReadLine();
             switch (menu)
             {
@@ -49,9 +49,13 @@ class Program
         do
         {
             Console.WriteLine("Automanagement-Menü: Wählen sie einer der Optionen in dem sie die zugehörige Zahl eintippen:\n" +
-            "1. \n" +
-            "2. \n" +
-            "3. ");
+            "1. Auto vermieten\n" +
+            "2. Auto zurückgeben\n" +
+            "3. Auto hinzufügen\n" +
+            "4. Auto bearbeiten\n" +
+            "5. Auto entfernen\n" +
+            "6. Hauptmenü\n" +
+            "7. Programm beenden\n");
             var Amenu = Console.ReadLine();
             switch (Amenu)
             {
@@ -62,6 +66,18 @@ class Program
                     Console.WriteLine("hey");
                     break;
                 case "3":
+                    Console.WriteLine("hey");
+                    break;
+                case "4":
+                    Console.WriteLine("hey");
+                    break;
+                case "5":
+                    Console.WriteLine("hey");
+                    break;
+                case "6":
+                    Main();
+                    break;
+                case "7":
                     Console.WriteLine("Anwendung wird beendet.");
                     return;
                 default:
@@ -79,9 +95,11 @@ class Program
         do
         {
             Console.WriteLine("Kundenmanagement-Menü: Wählen sie einer der Optionen in dem sie die zugehörige Zahl eintippen:\n" +
-            "1. \n" +
-            "2. \n" +
-            "3. ");
+            "1. Neukunden anlegen\n" +
+            "2. Kundeninformationen bearbeiten\n" +
+            "3. Kunde löschen\n" +
+            "4. Hauptmenü\n" +
+            "5. Programm beenden");
             var Kmenu = Console.ReadLine();
             switch (Kmenu)
             {
@@ -89,9 +107,15 @@ class Program
                     Console.WriteLine("bye");
                     break;
                 case "2":
-                    Main();
+                    Console.WriteLine("hey");
                     break;
                 case "3":
+                    Console.WriteLine("hey");
+                    break;
+                case "4":
+                    Main();
+                    break;
+                case "5":
                     Console.WriteLine("Anwendung wird beendet.");
                     return;
                 default:
