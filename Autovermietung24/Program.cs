@@ -51,10 +51,9 @@ class Program
             "1. Auto vermieten\n" +
             "2. Auto zurückgeben\n" +
             "3. Auto hinzufügen\n" +
-            "4. Auto bearbeiten\n" +
-            "5. Auto entfernen\n" +
-            "6. Hauptmenü\n" +
-            "7. Programm beenden\n");
+            "4. Auto entfernen\n" +
+            "5. Hauptmenü\n" +
+            "6. Programm beenden\n");
             var Amenu = Console.ReadLine();
             switch (Amenu)
             {
@@ -68,15 +67,12 @@ class Program
                     newAuto();
                     break;
                 case "4":
-                    editAuto();
-                    break;
-                case "5":
                     removeAuto();
                     break;
-                case "6":
+                case "5":
                     Main();
                     break;
-                case "7":
+                case "6":
                     Console.WriteLine("Anwendung wird beendet.");
                     return;
                 default:
@@ -207,38 +203,6 @@ class Program
                 Console.WriteLine("Auto erfolgreich zur Datenbank hinzugefügt.");
             }
         }
-        static void editAuto()
-        {
-            bool back = false;
-            do
-            {
-                using (var context = new AutovermietungsContext())
-                {
-                    Console.WriteLine("Geben Sie die ID des zu bearbeitenden Autos ein:");
-                    if (int.TryParse(Console.ReadLine(), out int autoId))
-                    {
-                        var auto = context.Autos.FirstOrDefault(a => a.Id == autoId);
-                        if (auto != null)
-                        {
-                            Console.WriteLine("Geben Sie die neuen Informationen für das Auto ein:");
-                            // Hier können Sie die Eigenschaften des Autos aktualisieren, z.B. Marke, Modell usw.
-                            context.SaveChanges();
-                            Console.WriteLine("Auto wurde erfolgreich bearbeitet.");
-                        }
-                        else
-                        {
-                            Console.WriteLine("Das angegebene Auto wurde nicht gefunden.");
-                            back = true;
-                        }
-                    }
-                    else
-                    {
-                        Console.WriteLine("Ungültige Eingabe. Bitte geben Sie eine gültige ID ein.");
-                        back = true;
-                    }
-                }
-            }while (back);
-        }
 
         static void removeAuto()
         {
@@ -279,33 +243,104 @@ class Program
         {
             Console.WriteLine("Kundenmanagement-Menü: Wählen sie einer der Optionen in dem sie die zugehörige Zahl eintippen:\n" +
             "1. Neukunden anlegen\n" +
-            "2. Kundeninformationen bearbeiten\n" +
-            "3. Kunde löschen\n" +
-            "4. Hauptmenü\n" +
-            "5. Programm beenden");
+            "2. Kunde löschen\n" +
+            "3. Hauptmenü\n" +
+            "4. Programm beenden");
             var Kmenu = Console.ReadLine();
             switch (Kmenu)
             {
                 case "1":
-                    Console.WriteLine("bye");
+                    newKunde();
                     break;
                 case "2":
-                    Console.WriteLine("hey");
+                    deleteKunde();
                     break;
                 case "3":
-                    Console.WriteLine("hey");
-                    break;
-                case "4":
                     Main();
                     break;
-                case "5":
+                case "4":
                     Console.WriteLine("Anwendung wird beendet.");
                     return;
                 default:
                     Console.WriteLine("Ungültige Option. Bitte wählen Sie erneut.");
                     DKmenu = true;
-                    break;  
+                    break;
             }
-        } while (DKmenu); 
+        } while (DKmenu);
+
+        static void newKunde()
+        {
+
+            using (var context = new AutovermietungsContext())
+            {
+                Console.WriteLine("Neuen Kunden anlegen...");
+
+                var neuerKunde = new Kunde();
+                Console.WriteLine("Nachname:");
+                neuerKunde.Nachname = Console.ReadLine();
+                Console.WriteLine("Vorname:");
+                neuerKunde.Vorname = Console.ReadLine();
+                Console.WriteLine("Geburtsdatum:");
+                neuerKunde.Geburtsdatum = Console.ReadLine();
+                Console.WriteLine("Geburtsort:");
+                neuerKunde.Geburtsort = Console.ReadLine();
+                Console.WriteLine("Anschrift:");
+                neuerKunde.Anschrift = Console.ReadLine();
+                Console.WriteLine("Staatsangehörigkeit:");
+                neuerKunde.Staatsangehörigkeit = Console.ReadLine();
+                Console.WriteLine("Ausweisnummer:");
+                neuerKunde.Ausweisnummer = Console.ReadLine();
+                Console.WriteLine("Führerscheinnummer:");
+                neuerKunde.Führerscheinnummer = Console.ReadLine();
+                Console.WriteLine("Gültigkeitsfrist:");
+                neuerKunde.Gültigkeitsfrist = Console.ReadLine();
+                Console.WriteLine("Fahrerlaubnisklasse B (true/false):");
+                if (bool.TryParse(Console.ReadLine(), out bool fahrerlaubnis))
+                {
+                    neuerKunde.FahrerlaubnisklasseB = fahrerlaubnis;
+                }
+                Console.WriteLine("Zusatzangaben:");
+                neuerKunde.Zusatzangaben = Console.ReadLine();
+
+                context.Kunden.Add(neuerKunde);
+                context.SaveChanges();
+
+                Console.WriteLine("Neuer Kunde wurde erfolgreich angelegt.");
+            }
+        }
+
+        static void deleteKunde()
+        {
+            bool back = false;
+
+            do
+            {
+                using (var context = new AutovermietungsContext())
+                {
+                    Console.WriteLine("Geben Sie die ID des zu löschenden Kunden ein:");
+                    if (int.TryParse(Console.ReadLine(), out int kundenId))
+                    {
+                        var kunde = context.Kunden.FirstOrDefault(k => k.Id == kundenId);
+                        if (kunde != null)
+                        {
+                            context.Kunden.Remove(kunde);
+                            context.SaveChanges();
+                            Console.WriteLine("Kunde wurde erfolgreich gelöscht.");
+                        }
+                        else
+                        {
+                            Console.WriteLine("Der angegebene Kunde wurde nicht gefunden.");
+                            back = true;
+                        }
+                    }
+                    else
+                    {
+                        Console.WriteLine("Ungültige Eingabe. Bitte geben Sie eine gültige ID ein.");
+                        back = true;
+                    }
+                }
+            } while (back);
+        }
+
     }
 }
