@@ -1,2 +1,2 @@
 # Autovermietung24
-UML-Diagramm wird noch heute hinzugefügt. Der Code (und evtl. das UML-Diagramm) wird noch bis Donnerstag Abend erweitert.
+Der Mitarbeiter einer Filiale bedient den Kunden mithilfe dieser Software. Auf der Datenbank werden alle nötigen Auto- und Kundendaten gespeichert.
